@@ -1,1 +1,3 @@
-<p>todos works!</p>
+<ng-container *ngFor="let todo of todos">
+  <app-task [todoItem]="todo" (deleteTaskEvent)="deleteTodo($event)"></app-task>
+</ng-container>

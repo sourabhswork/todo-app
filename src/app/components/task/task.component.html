@@ -1,1 +1,15 @@
-<p>task works!</p>
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>{{todoItem.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{todoItem.description}}</p>
+        <p><small>{{todoItem.dueDate}}</small></p>
+    </mat-card-content>
+    <mat-card-footer>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Edit</button>
+            <button mat-raised-button color="warn" *ngIf="todoItem.id !== undefined" (click)="deleteTask(todoItem.id)">Delete</button>
+        </mat-card-actions>
+    </mat-card-footer>
+</mat-card>

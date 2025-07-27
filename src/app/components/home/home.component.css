@@ -1,6 +1,10 @@
-mat-toolbar{
+mat-toolbar {
     background-color: #e0d4d4;
     color: #000000;
     padding: 10px;
     text-align: center;
+}
+
+h1 {
+    margin: 10px;
 }

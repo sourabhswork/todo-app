@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Todo {
-  id: number;
-  title: string;
-  description: string;
-  completed: boolean;
-  dueDate: Date;
-}
+import { Todo } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +9,9 @@ export class TodoService {
   constructor() { }
 
   TASKS: Todo[] = [
-    {id: 1, title: 'Get Car Washed', description: 'Do it before New Moon', completed: false, dueDate: new Date()},
-    {id: 2, title: 'Get Haircut', description: 'Do it before Monday', completed: false, dueDate: new Date()},
-    {id: 3, title: 'Get Grocery', description: 'Do it before Evening', completed: true, dueDate: new Date()}
+    { id: 1, title: 'Get Car Washed', description: 'Do it before New Moon', completed: false, dueDate: new Date() },
+    { id: 2, title: 'Get Haircut', description: 'Do it before Monday', completed: false, dueDate: new Date() },
+    { id: 3, title: 'Get Grocery', description: 'Do it before Evening', completed: true, dueDate: new Date() }
   ];
 
   createTask(task: Todo): Todo {
@@ -46,8 +39,14 @@ export class TodoService {
     return false;
   }
 
-  deleteTaskById(taskId: number): Todo[] {
-    this.TASKS = this.TASKS.filter(task => task.id !== taskId)
-    return this.TASKS
+  deleteTaskById(taskId: number): Boolean {
+    const taskIndex = this.TASKS.findIndex(task => task.id === taskId);
+    if (taskIndex !== -1) {
+      this.TASKS.splice(taskIndex, 1);
+      console.log(taskIndex);
+      
+      return true;
+    }
+    return false
   }
 }
